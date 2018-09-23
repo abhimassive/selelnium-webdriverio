@@ -1,5 +1,5 @@
 require('dotenv').config();
-var timeout = process.env.DEBUG ? 9999999 : 10000
+var timeout = process.env.DEBUG ? 9999999 : 20000
 exports.config = {
 
     //
@@ -172,7 +172,6 @@ exports.config = {
                 return browser.waitUntil(() => {
                     url = browser.getUrl();
                     actual = url.includes(value)
-                    console.log('actual==', actual, 'value==', value, 'url==', url)
 
                     // This slash is added by Selenium
                     if (typeof value === 'string' && !value.endsWith('/')) {

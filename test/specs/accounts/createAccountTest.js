@@ -1,6 +1,16 @@
-import { createAccount, openSignUpPage, welcomeMessage, accountState, chooseAccountType, chooseTeamType, selectMarketingType, selectMarketingRole } from "../../actions/account"
+import {
+  createAccount,
+  openSignUpPage,
+  welcomeMessage,
+  accountState,
+  chooseAccountType,
+  chooseTeamType,
+  selectMarketingType,
+  selectMarketingRole,
+  landingPageLoaded
+} from '../../actions/account'
 
-describe('Test Sign up for free Feature', () => {
+describe('End to End Test for SignUp', () => {
   it('Open SignUp Page', () => {
     openSignUpPage()
   })
@@ -14,17 +24,14 @@ describe('Test Sign up for free Feature', () => {
     }
   })
 
-  it('Continue', () => {
+  it('Continue Account Setup', () => {
     if (accountState() === 'signup') {
       chooseAccountType('Business')
       chooseTeamType('Single')
-      browser.pause(5000)
+      expect(landingPageLoaded()).to.equal(true)
     } else {
       selectMarketingType('StartingOut')
       selectMarketingRole('CEO')
     }
-  });
-
-
-
+  })
 })

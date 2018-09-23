@@ -86,3 +86,10 @@ export function chooseTeamType(teamType) {
     accountPage.buttonChooseMultipleTeams.click()
   }
 }
+
+export function landingPageLoaded() {
+  browser.waitUntil(() => accountPage.navMainNavigation.isVisible() === true, 5000, 'Landing Page not loaded', 200);
+  accountPage.navMainNavigation.waitForExist()
+  accountPage.navMainNavigation.waitForVisible()
+  return accountPage.navMainNavigation.isVisible()
+}

@@ -26,6 +26,8 @@ export default new class accountPage extends Page {
   get buttonChooseSingleTeam() { return browser.element("//div[@id='accordion-target-0']//ul[1]//li[1]//button[1]") }
   get buttonChooseMultipleTeams() { return browser.element("//div[@id='accordion-target-0']//ul[1]//li[2]//button[1]") }
 
+  get navMainNavigation() { return browser.element("//ul[@id='main-nav']") }
+
 
   open() {
     super.open('signup');
