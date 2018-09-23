@@ -20,6 +20,10 @@ This is a highly scalable robust page-object model. The framework is designed as
   
 * ACTIONS - Actions or Helpers are functions which carry out common actions throughout the app. Each action can have
   multiple clicks and setValues to form an actions. Examples of actions are createAccount, signIn, checkOut, chooseMarketingType
+
+
+ASSUMPTIONS: This test will run Successfully only if clicking Create Account lands in 'Choose your account type' page.
+Rest of the Account Setup landing pages are not handled
   
   #### Get Started
   

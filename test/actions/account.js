@@ -7,7 +7,12 @@ var fullName = firstName + ' ' + lastName
 var companyName = faker.company.companyName()
 var email = ((firstName + '.' + lastName).toLowerCase()) + '@test.com'
 var password = process.env.SIGNUP_PASS
-console.log(fullName, companyName, email, password)
+console.log('Creating Account with the following details : ' +
+  '\nFull Name : ', fullName +
+  '\nCompany Name : ', companyName +
+  '\nEmail : ', email +
+  '\nPassword : ', password)
+
 
 export function openSignUpPage() {
   accountPage.open()
