@@ -19,11 +19,21 @@ export function createAccount() {
   accountPage.inputEmailAddress.setValue(email)
   accountPage.inputPassword.setValue(password)
   accountPage.buttonCreateMyAccount.click()
+  browser.waitForUrl('createsend')
   return fullName, companyName, email, password
 }
 
+export function accountState() {
+  if ((browser.getUrl()).includes('signupstep2')) {
+    return 'signup'
+  } else {
+    return 'welcome'
+  }
+}
+
 export function welcomeMessage() {
-  return accountPage.messageWelcome.getText()
+  var welcomeMsg = accountPage.messageWelcome.getText()
+  return welcomeMsg
 }
 
 export function selectMarketingType(type) {
@@ -43,6 +53,18 @@ export function selectMarketingType(type) {
       break
     default:
       accountPage.optionJustStartingOut().click()
+      break;
+  }
+}
+
+export function selectMarketingRole(role) {
+  accountPage.emailMarketingRole.click()
+  switch (role.toLowerCase()) {
+    case 'ceo':
+      accountPage.optionCEO().click()
+      break
+    default:
+      accountPage.optionOther().click()
       break;
   }
 }

@@ -15,6 +15,8 @@ export default new class accountPage extends Page {
   get optionResell() { return browser.element("//option[@value='resell']") }
 
   get emailMarketingRole() { return browser.element("//select[@name='email-marketer-role']") }
+  get optionCEO() { return browser.element("//option[@value='CEO']") }
+  get optionOther() { return browser.element("//option[@value='CEO']") }
 
   //Buttons
   get buttonCreateMyAccount() { return browser.element("//button[@class='cmbtn primary']") }

@@ -164,6 +164,41 @@ exports.config = {
         const chai = require('chai');
         global.expect = chai.expect;
         chai.Should();
+
+        browser.addCommand('waitForUrl', function (value, timeout, revert) {
+            let url, actual;
+
+            try {
+                return browser.waitUntil(() => {
+                    url = browser.getUrl();
+                    actual = url.includes(value)
+                    console.log('actual==', actual, 'value==', value, 'url==', url)
+
+                    // This slash is added by Selenium
+                    if (typeof value === 'string' && !value.endsWith('/')) {
+                        url = url.replace(/\/$/, '');
+                    }
+
+                    if (typeof value === 'function') {
+                        actual = value(url);
+                    } else if (value[Symbol.match]) {
+                        actual = value.test(url);
+                    }
+
+                    if (revert) {
+                        actual = !actual;
+                    }
+
+                    return value && actual;
+                }, timeout, '');
+            } catch (error) {
+                let message = 'Could not wait for required url:';
+                message += `\n\tActual: ${url}`;
+                message += `\n\tExpected: ${value}`;
+
+                throw new Error(message);
+            }
+        });
     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
