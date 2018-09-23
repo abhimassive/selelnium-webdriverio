@@ -1,5 +1,7 @@
+require('dotenv').config();
+var timeout = process.env.DEBUG ? 9999999 : 10000
 exports.config = {
-    
+
     //
     // ==================
     // Specify Test Files
@@ -14,7 +16,6 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
     ],
     //
     // ============
@@ -44,7 +45,7 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'firefox'
+        browserName: 'chrome'
     }],
     //
     // ===================
@@ -77,10 +78,10 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://campaignmonitor.com/signup',
+    baseUrl: process.env.BASE_URL,
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 30000,
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -125,12 +126,14 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
     reporters: ['spec'],
-    
+
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+        compilers: ['js:babel-register'],
+        timeout: timeout
     },
     //
     // =====
@@ -156,6 +159,12 @@ exports.config = {
      */
     // beforeSession: function (config, capabilities, specs) {
     // },
+
+    before() {
+        const chai = require('chai');
+        global.expect = chai.expect;
+        chai.Should();
+    },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
@@ -171,7 +180,7 @@ exports.config = {
      */
     // beforeCommand: function (commandName, args) {
     // },
-    
+
     /**
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details
@@ -208,7 +217,7 @@ exports.config = {
      */
     // afterSuite: function (suite) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name
