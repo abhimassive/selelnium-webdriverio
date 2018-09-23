@@ -19,7 +19,19 @@ This is a highly scalable robust page-object model. The framework is designed as
   The elements from these pages can be used and re-used to construct re-usable actions(described below) which can be used by the above Tests
   
 * ACTIONS - Actions or Helpers are functions which carry out common actions throughout the app. Each action can have
-  multiple clicks and setValues to form an actions. Examples of actions are createAccount, signIn, checkOut, chooseMarketingType
+  multiple clicks and setValues to form an actions. Examples of actions are createAccount, signIn, checkOut, chooseMarketingType.
+  Actions can also take in parameters which means a single action function can perform multiple data-driven scenarios. For example signIn() can take your credentials in its parameters and the same function can perform the signIn for multiple credentials - `singIn('foo@bar.com', 'Pass1234')`
+
+  An example snippet from this repo's test:
+
+  ```
+  chooseAccountType('Business')
+  chooseTeamType('Single')
+      
+  selectMarketingType('StartingOut')
+  selectMarketingRole('CEO')
+  ```
+
 
 
 ASSUMPTIONS: This test will run Successfully only if clicking Create Account lands in 'Choose your account type' page.
