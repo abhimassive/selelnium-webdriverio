@@ -1,5 +1,5 @@
 import Page from './page'
-export default new class accountPage extends Page {
+export default new class signUpPage extends Page {
   // Input Fields
   get inputFullName() { return browser.element("//input[@name='contactName']") }
   get inputCompanyName() { return browser.element("//input[@name='companyName']") }

@@ -26,7 +26,7 @@ describe('End to End Test for SignUp', () => {
     }
   })
 
-  it('Continue Account Setup', () => {
+  it('Choose Your Account Type - Business and Single Team', () => {
     if (accountState() === 'signup') {
       chooseAccountType('Business')
       chooseTeamType('Single')
