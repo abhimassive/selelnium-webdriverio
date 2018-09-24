@@ -1,4 +1,5 @@
 1) Should not allow user to create buttons or sections with same text color as the background color. Should throw an error or warning while creating such an item
+
 ![Alt text](/img/sameBgTxtColor.png?raw=true "Title")
 
 
