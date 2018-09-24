@@ -1,7 +1,7 @@
 {
-  "name": "selenium-create-account",
+  "name": "selelnium-webdriverio",
   "version": "1.0.0",
-  "description": "boilerplate for wdio",
+  "description": "boilerplate wdio code for creating account",
   "main": "index.js",
   "scripts": {
     "test": "wdio wdio.conf.js"
