@@ -23,7 +23,7 @@ Below are the reasons that can cause Test flakiness and the solution to mitigate
    Using these to identify web elements will fail the tests if anything as changed in the dom. 
    Also tests will fail if they are expecting a particular text in a particular language in page. 
    e.g this test will fail if the app is in English but will fail if localized: expect(homepage.welcomeMessage.getText()).to.equal(‘Welcome Mike’). 
-   `Welcome` will be spelled differently in German or French.  A better approach would be expect(….)to.equal.(localeCompare(‘Welcome Mike’))
+   `Welcome` will be spelled differently in German or French.  A better approach would be expect(….)to.equal.(localeCompare(‘Welcome Mike’))
    Solution: a) Coordinate better with Devs to get a specific `data-qa` tags for the elements that you wanna target. 
                 These tags can be removed in a pre-build step before the application is deployed to production. 
              b) Should refrain from using hard-coded values for assertions
