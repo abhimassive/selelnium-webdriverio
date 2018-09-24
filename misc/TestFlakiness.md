@@ -2,9 +2,9 @@ Below are the reasons that can cause Test flakiness and the solution to mitigate
 
 1. **Using Hardcoded data** - Tests might pass on the first run, but would fail on the second run onwards. For example: 
   Create Account Test- If the same emailId is used to register again, the test will fail saying ‘This id already exists’ 
-  and subsequent tests dependent on this will fail as well which is another weakpoint that is discussed in next point.  
+  and subsequent tests dependent on this will fail as well which is another weakpoint that is discussed in next point.
   
-  Solution:
+   Solution:
    - Let tests generate their own data on runtime using random string generator functions or using 
   other third-party packages which generate the data for you like FakerJs which has been used in my test framework
    -  Add script at the end of your suite like an afterAll() function to connect to the Database and wipe all test data 
