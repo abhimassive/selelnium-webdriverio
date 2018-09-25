@@ -45,7 +45,7 @@ Rest of the Account Setup landing pages are not handled
   
   * Install dependencies - `npm install`
   
-  * Create a `.env` file in the root of this repo and fill up the values using `.env-sample` as a reference
+  * Create a `.env` file in the root of this repo and fill up the values using `.env-sample` as a reference [More Info](https://github.com/motdotla/dotenv)
   
       Note: BASE_URL should only contain the homepage address with a trailing '/' and should not include any paths like /signin, /signup, /account etc 
   
